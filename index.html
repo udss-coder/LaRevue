@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Revue — A Journal of Trends &amp; Living</title>
+<meta name="description" content="La Revue is a journal of trends and living — art of living, beauty and style, wellness, interiors, travel and table, curated for the way you actually live.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink: #1a1712;
+    --ink-soft: #4a4640;
+    --paper: #efe8da;
+    --paper-deep: #e4dbc8;
+    --card: #f7f3ea;
+    --rouge: #9c2b2f;
+    --rouge-deep: #7c2226;
+    --taupe: #8a7860;
+    --line: rgba(26,23,18,0.14);
+    --line-strong: rgba(26,23,18,0.28);
+
+    --serif: "Fraunces", "Times New Roman", serif;
+    --sans: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --container: 1240px;
+    --gutter: clamp(20px, 4vw, 56px);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  body{
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img{ max-width: 100%; display: block; }
+  a{ color: inherit; text-decoration: none; }
+  ul{ margin: 0; padding: 0; list-style: none; }
+
+  .wrap{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  ::selection{ background: var(--rouge); color: var(--paper); }
+
+  /* ---------- focus ---------- */
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline: 2px solid var(--rouge);
+    outline-offset: 3px;
+  }
+
+  /* ---------- top strip ---------- */
+  .topstrip{
+    background: var(--ink);
+    color: var(--paper-deep);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-align: center;
+    padding: 8px var(--gutter);
+  }
+
+  /* ---------- header / nav ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px var(--gutter);
+    gap: 24px;
+  }
+
+  .logo{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.55rem;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .logo span{ font-style: normal; color: var(--rouge); }
+
+  .nav-links{
+    display: flex;
+    gap: 34px;
+    font-size: 0.92rem;
+  }
+  .nav-links a{
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a::after{
+    content: "";
+    position: absolute;
+    left: 0; right: 100%;
+    bottom: 0;
+    height: 1px;
+    background: var(--rouge);
+    transition: right 0.35s cubic-bezier(.4,0,.2,1);
+  }
+  .nav-links a:hover::after{ right: 0; }
+
+  .nav-cta{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .btn-line{
+    border: 1px solid var(--ink);
+    padding: 9px 20px;
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    transition: background 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+  }
+  .btn-line:hover{ background: var(--ink); color: var(--paper); }
+
+  .hamburger{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 34px;
+    height: 34px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .hamburger span{
+    display: block;
+    height: 1px;
+    background: var(--ink);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .hamburger span:nth-child(1){ width: 26px; }
+  .hamburger span:nth-child(2){ width: 20px; align-self: flex-end; }
+  .hamburger span:nth-child(3){ width: 26px; }
+  .hamburger.active span:nth-child(1){ transform: translateY(6px) rotate(45deg); width: 26px; }
+  .hamburger.active span:nth-child(2){ opacity: 0; }
+  .hamburger.active span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); width: 26px; }
+
+  .mobile-panel{
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 0;
+    background: var(--paper);
+    z-index: 55;
+    padding: 100px var(--gutter) 40px;
+    transform: translateY(-100%);
+    transition: transform 0.45s cubic-bezier(.4,0,.2,1);
+  }
+  .mobile-panel.open{ transform: translateY(0); }
+  .mobile-panel ul{
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-style: italic;
+  }
+  .mobile-panel .btn-line{
+    display: inline-block;
+    margin-top: 34px;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 860px){
+    .nav-links{ display: none; }
+    .nav-cta .btn-line{ display: none; }
+    .hamburger{ display: flex; }
+    .mobile-panel{ display: block; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding: clamp(40px, 7vw, 90px) var(--gutter) 0;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(20px, 4vw, 60px);
+    align-items: end;
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+
+  .hero-text{ opacity: 0; transform: translateY(18px); animation: rise 0.9s 0.15s cubic-bezier(.16,1,.3,1) forwards; }
+  .hero-media{ opacity: 0; transform: translateY(18px) scale(1.02); animation: rise 1s 0.35s cubic-bezier(.16,1,.3,1) forwards; }
+
+  @keyframes rise{ to{ opacity: 1; transform: translateY(0) scale(1); } }
+
+  .issue-label{
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: var(--rouge-deep);
+    margin-bottom: 22px;
+    text-transform: uppercase;
+  }
+
+  .hero h1{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 5.4vw, 4.6rem);
+    line-height: 1.03;
+    margin: 0 0 28px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em{ font-style: italic; color: var(--rouge); font-weight: 400; }
+
+  .hero p{
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin: 0 0 34px;
+  }
+
+  .hero-actions{ display: flex; align-items: center; gap: 28px; }
+  .btn-solid{
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 30px;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--ink);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .btn-solid:hover{ background: transparent; color: var(--ink); }
+  .text-link{
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 2px;
+  }
+
+  .hero-media{
+    position: relative;
+    aspect-ratio: 4 / 5.1;
+    overflow: hidden;
+  }
+  .hero-media img{
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .hero-media figcaption{
+    position: absolute;
+    left: 18px; bottom: 18px;
+    background: var(--paper);
+    padding: 9px 16px;
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+
+  /* ---------- section frame ---------- */
+  .section{ padding: clamp(70px, 9vw, 130px) 0; }
+  .section-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: clamp(36px, 5vw, 60px);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 22px;
+  }
+  .section-head .kicker{
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .section-head h2{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .section-head p{
+    max-width: 34ch;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    text-align: right;
+  }
+  @media (max-width: 700px){
+    .section-head{ flex-direction: column; align-items: flex-start; }
+    .section-head p{ text-align: left; }
+  }
+
+  .reveal{ opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1); }
+  .reveal.in{ opacity: 1; transform: translateY(0); }
+
+  /* ---------- journal grid ---------- */
+  .journal-grid{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: clamp(18px, 2.4vw, 30px);
+  }
+  .journal-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  .journal-card .img-box{
+    position: relative;
+    overflow: hidden;
+    background: var(--paper-deep);
+  }
+  .journal-card img{
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s cubic-bezier(.16,1,.3,1);
+  }
+  .journal-card:hover img{ transform: scale(1.045); }
+
+  .journal-card .body{
+    padding: 22px 24px 26px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .journal-card .cat{
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rouge-deep);
+    margin-bottom: 10px;
+  }
+  .journal-card h3{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.32rem;
+    margin: 0 0 10px;
+    line-height: 1.22;
+  }
+  .journal-card p{
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0 0 18px;
+    flex: 1;
+  }
+  .journal-card .rd{
+    font-size: 0.82rem;
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .journal-card .rd .arrow{
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  .journal-card:hover .rd .arrow{ transform: translateX(4px); }
+
+  .card--feature{ grid-column: span 3; grid-row: span 2; }
+  .card--feature .img-box{ aspect-ratio: 6/5; }
+  .card--feature h3{ font-size: 1.9rem; }
+  .card--feature p{ font-size: 0.98rem; max-width: 42ch; }
+
+  .card--tall{ grid-column: span 3; }
+  .card--tall .img-box{ aspect-ratio: 16/10; }
+
+  .card--wide{ grid-column: span 2; }
+  .card--wide .img-box{ aspect-ratio: 4/3; }
+
+  @media (max-width: 980px){
+    .journal-grid{ grid-template-columns: repeat(2, 1fr); }
+    .card--feature{ grid-column: span 2; grid-row: auto; }
+    .card--tall{ grid-column: span 2; }
+    .card--wide{ grid-column: span 1; }
+  }
+  @media (max-width: 560px){
+    .journal-grid{ grid-template-columns: 1fr; }
+    .card--feature, .card--tall, .card--wide{ grid-column: span 1; }
+  }
+
+  /* ---------- editorial break / stat strip ---------- */
+  .break{
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .break .wrap{
+    padding: clamp(50px, 7vw, 80px) var(--gutter);
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .break h3{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    line-height: 1.3;
+    margin: 0;
+  }
+  .break-stats{
+    display: flex;
+    gap: clamp(24px, 4vw, 48px);
+    justify-content: flex-end;
+  }
+  .break-stats div{ text-align: left; }
+  .break-stats strong{
+    display: block;
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    color: var(--rouge);
+  }
+  .break-stats span{
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    color: var(--paper-deep);
+  }
+  @media (max-width: 760px){
+    .break .wrap{ grid-template-columns: 1fr; }
+    .break-stats{ justify-content: flex-start; flex-wrap: wrap; }
+  }
+
+  /* ---------- partners / brand marquee ---------- */
+  .partners .section-head{ border-bottom: none; margin-bottom: 40px; }
+  .marquee-outer{
+    position: relative;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 34px 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-track{
+    display: flex;
+    width: max-content;
+    gap: clamp(50px, 6vw, 90px);
+    animation: scroll-left 34s linear infinite;
+  }
+  .marquee-outer:hover .marquee-track{ animation-play-state: paused; }
+  @keyframes scroll-left{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(-50%); }
+  }
+  .brand-mark{
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    opacity: 0.55;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+  }
+  .brand-mark:hover{ opacity: 1; }
+  .brand-mark small{
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    vertical-align: super;
+    margin-left: 6px;
+    opacity: 0.7;
+  }
+  .partners-foot{
+    margin-top: 26px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .partners-foot a{ border-bottom: 1px solid var(--line-strong); }
+
+  /* ---------- newsletter ---------- */
+  .subscribe{
+    background: var(--paper-deep);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .subscribe .wrap{
+    padding: clamp(60px, 8vw, 100px) var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .subscribe h2{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    margin: 0 0 14px;
+  }
+  .subscribe p{ color: var(--ink-soft); max-width: 42ch; margin: 0; line-height: 1.6; }
+
+  .sub-form{ display: flex; flex-direction: column; gap: 14px; }
+  .sub-row{
+    display: flex;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 10px;
+  }
+  .sub-row input{
+    flex: 1;
+    border: none;
+    background: none;
+    font-family: var(--sans);
+    font-size: 1rem;
+    padding: 6px 0;
+    color: var(--ink);
+  }
+  .sub-row input::placeholder{ color: var(--ink-soft); }
+  .sub-row button{
+    background: none;
+    border: none;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    color: var(--rouge-deep);
+    white-space: nowrap;
+  }
+  .sub-note{ font-size: 0.78rem; color: var(--ink-soft); }
+  .sub-confirm{
+    font-size: 0.9rem;
+    color: var(--rouge-deep);
+    display: none;
+  }
+  .sub-confirm.show{ display: block; }
+  @media (max-width: 760px){ .subscribe .wrap{ grid-template-columns: 1fr; } }
+
+  /* ---------- footer ---------- */
+  footer{ padding: clamp(60px, 7vw, 90px) 0 0; }
+  .foot-top{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid var(--line);
+  }
+  .foot-brand .logo{ margin-bottom: 16px; }
+  .foot-brand p{ font-size: 0.9rem; color: var(--ink-soft); max-width: 32ch; line-height: 1.6; }
+  .foot-col h4{
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin: 0 0 18px;
+  }
+  .foot-col ul{ display: flex; flex-direction: column; gap: 12px; font-size: 0.92rem; }
+  .foot-col a:hover{ color: var(--rouge-deep); }
+  .foot-social{ display: flex; gap: 14px; margin-top: 20px; }
+  .foot-social a{
+    width: 36px; height: 36px;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+  .foot-social a:hover{ background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .foot-social svg{ width: 15px; height: 15px; fill: currentColor; }
+
+  @media (max-width: 760px){
+    .foot-top{ grid-template-columns: 1fr 1fr; }
+    .foot-brand{ grid-column: span 2; }
+  }
+  @media (max-width: 460px){
+    .foot-top{ grid-template-columns: 1fr; }
+    .foot-brand{ grid-column: span 1; }
+  }
+
+  .foot-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 22px var(--gutter) 30px;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    flex-wrap: wrap;
+  }
+  .foot-bottom .disc{ max-width: 60ch; }
+</style>
+</head>
+<body>
+
+<div class="topstrip">HONESTLY CURATED · INDEPENDENTLY OWNED · SOME LINKS ON THIS JOURNAL ARE AFFILIATE LINKS</div>
+
+<header>
+  <div class="nav wrap" style="padding-left:0; padding-right:0;">
+    <a href="#top" class="logo">La<span>Revue</span></a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#journal">The Journal</a>
+      <a href="#edit">The Edit</a>
+      <a href="#partners">Partners</a>
+      <a href="#subscribe">Subscribe</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="#subscribe" class="btn-line">Join the List</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <ul>
+    <li><a href="#journal" class="mobile-link">The Journal</a></li>
+    <li><a href="#edit" class="mobile-link">The Edit</a></li>
+    <li><a href="#partners" class="mobile-link">Partners</a></li>
+    <li><a href="#subscribe" class="mobile-link">Subscribe</a></li>
+  </ul>
+  <a href="#subscribe" class="btn-line mobile-link">Join the List</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="issue-label">No. 01 — The Autumn Edition</span>
+      <h1>The art of living, <em>reported</em> from the front row.</h1>
+      <p>A journal of trends and living for people who read the runway the way others read the weather — beauty, interiors, travel and the table, curated into something worth your afternoon.</p>
+      <div class="hero-actions">
+        <a href="#journal" class="btn-solid">Read the Journal</a>
+        <a href="#edit" class="text-link">See the categories</a>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200&auto=format&fit=crop" alt="Editorial fashion portrait in soft natural light">
+      <figcaption>Milan, backstage — this week</figcaption>
+    </figure>
+  </section>
+
+  <!-- JOURNAL / CATEGORIES -->
+  <section class="section" id="journal">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="kicker">The Journal</span>
+          <h2>Six ways to spend an afternoon</h2>
+        </div>
+        <p>Every story opens onto the brands, makers and addresses behind it — so a good read is always one click from a good decision.</p>
+      </div>
+
+      <div class="journal-grid" id="edit">
+
+        <article class="journal-card card--feature reveal">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop" alt="A softly lit living room styled with linen and ceramics">
+          </div>
+          <div class="body">
+            <span class="cat">Art of Living</span>
+            <h3>The unhurried home: a season of slower mornings</h3>
+            <p>Linen that softens with age, ceramics thrown by hand, and the small rituals that make a Tuesday feel considered — this season's edit of the objects worth keeping.</p>
+            <div class="rd"><span>Read the edit</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+
+        <article class="journal-card card--tall reveal">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1000&auto=format&fit=crop" alt="Minimalist beauty products arranged on a marble surface">
+          </div>
+          <div class="body">
+            <span class="cat">Beauty &amp; Style</span>
+            <h3>The clean beauty edit, tried and reordered</h3>
+            <p>What we repurchase without thinking twice — from the skincare that earns a permanent shelf spot to the one lipstick worth three of anything else.</p>
+            <div class="rd"><span>Read the edit</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+
+        <article class="journal-card card--tall reveal">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1000&auto=format&fit=crop" alt="A calm morning wellness scene with tea and soft light">
+          </div>
+          <div class="body">
+            <span class="cat">Wellness &amp; Ritual</span>
+            <h3>Slow mornings, sharper days: a ritual worth keeping</h3>
+            <p>The supplements, the stretch, the first hour before the phone — small, sustainable rituals that people who actually keep them swear by.</p>
+            <div class="rd"><span>Read the edit</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+
+        <article class="journal-card card--wide reveal">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=900&auto=format&fit=crop" alt="A sunlit interior with sculptural furniture">
+          </div>
+          <div class="body">
+            <span class="cat">Home &amp; Interiors</span>
+            <h3>Furnishing a room that ages well</h3>
+            <p>Pieces built to outlast a trend cycle, and the small edits that make a rented room feel entirely yours.</p>
+            <div class="rd"><span>Read the edit</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+
+        <article class="journal-card card--wide reveal">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=900&auto=format&fit=crop" alt="A traveller's suitcase and passport on a hotel bed">
+          </div>
+          <div class="body">
+            <span class="cat">Travel &amp; Escape</span>
+            <h3>Packing for a week that looks effortless</h3>
+            <p>A capsule that survives four cities and two climates — plus the carry-on pieces doing all the quiet work.</p>
+            <div class="rd"><span>Read the edit</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+
+        <article class="journal-card card--wide reveal">
+          <div class="img-box">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=900&auto=format&fit=crop" alt="A beautifully set dinner table with natural wine and candlelight">
+          </div>
+          <div class="body">
+            <span class="cat">Taste &amp; Table</span>
+            <h3>Setting a table people don't want to leave</h3>
+            <p>Natural wine, an easy menu, and the tableware that turns a Tuesday dinner into an occasion.</p>
+            <div class="rd"><span>Read the edit</span><span class="arrow">→</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL BREAK -->
+  <section class="break">
+    <div class="wrap">
+      <h3>"We don't chase every trend. We wait for the ones worth writing about — then we tell you exactly where to find them."</h3>
+      <div class="break-stats">
+        <div><strong>06</strong><span>Living categories</span></div>
+        <div><strong>40+</strong><span>Partner houses</span></div>
+        <div><strong>2×</strong><span>New editions weekly</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="section partners" id="partners">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="kicker">In Partnership With</span>
+          <h2>The houses we actually use</h2>
+        </div>
+        <p>We work with a small, rotating list of brands across beauty, home, wellness and travel — chosen, not sold to.</p>
+      </div>
+    </div>
+
+    <div class="marquee-outer">
+      <div class="marquee-track" id="marqueeTrack">
+        <span class="brand-mark">Maison Noir <small>PARIS</small></span>
+        <span class="brand-mark">Côte &amp; Lune</span>
+        <span class="brand-mark">Velara <small>MILANO</small></span>
+        <span class="brand-mark">Nordly Studio</span>
+        <span class="brand-mark">Amour &amp; Co.</span>
+        <span class="brand-mark">Lume Beauty</span>
+        <span class="brand-mark">Atelier Vasse</span>
+        <span class="brand-mark">Ferro &amp; Sel</span>
+        <!-- duplicated for seamless loop -->
+        <span class="brand-mark" aria-hidden="true">Maison Noir <small>PARIS</small></span>
+        <span class="brand-mark" aria-hidden="true">Côte &amp; Lune</span>
+        <span class="brand-mark" aria-hidden="true">Velara <small>MILANO</small></span>
+        <span class="brand-mark" aria-hidden="true">Nordly Studio</span>
+        <span class="brand-mark" aria-hidden="true">Amour &amp; Co.</span>
+        <span class="brand-mark" aria-hidden="true">Lume Beauty</span>
+        <span class="brand-mark" aria-hidden="true">Atelier Vasse</span>
+        <span class="brand-mark" aria-hidden="true">Ferro &amp; Sel</span>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="partners-foot">
+        <span>Logos shown are placeholder wordmarks — swap in your partners' real marks.</span>
+        <a href="#">Enquire about a partnership</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE -->
+  <section class="subscribe" id="subscribe">
+    <div class="wrap">
+      <div>
+        <h2>An edition, twice a week.</h2>
+        <p>No noise — just the story, the shortlist, and where to buy it. Unsubscribe whenever you like.</p>
+      </div>
+      <form class="sub-form" id="subForm">
+        <div class="sub-row">
+          <input type="email" required placeholder="your email address" aria-label="Email address" id="subEmail">
+          <button type="submit">Subscribe</button>
+        </div>
+        <span class="sub-note">By subscribing you agree to receive the journal by email.</span>
+        <span class="sub-confirm" id="subConfirm">You're on the list — welcome to La Revue.</span>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="logo">La<span>Revue</span></a>
+        <p>A journal of trends and living, independently written and edited — supported by our partners, honest with our readers.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.25.06 2.1.25 2.85.55.77.3 1.42.7 2.07 1.35.65.65 1.05 1.3 1.35 2.07.3.75.49 1.6.55 2.85.06 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.06 1.25-.25 2.1-.55 2.85-.3.77-.7 1.42-1.35 2.07-.65.65-1.3 1.05-2.07 1.35-.75.3-1.6.49-2.85.55-1.25.06-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.25-.06-2.1-.25-2.85-.55-.77-.3-1.42-.7-2.07-1.35-.65-.65-1.05-1.3-1.35-2.07-.3-.75-.49-1.6-.55-2.85C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.06-1.25.25-2.1.55-2.85.3-.77.7-1.42 1.35-2.07.65-.65 1.3-1.05 2.07-1.35.75-.3 1.6-.49 2.85-.55C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52 0-4.76.07-1.02.05-1.57.22-1.94.36-.49.19-.83.42-1.2.79-.37.37-.6.71-.79 1.2-.14.37-.31.92-.36 1.94C3.2 9.6 3.2 9.97 3.2 12s0 3.52.07 4.76c.05 1.02.22 1.57.36 1.94.19.49.42.83.79 1.2.37.37.71.6 1.2.79.37.14.92.31 1.94.36 1.24.06 1.61.07 4.76.07s3.52 0 4.76-.07c1.02-.05 1.57-.22 1.94-.36.49-.19.83-.42 1.2-.79.37-.37.6-.71.79-1.2.14-.37.31-.92.36-1.94.06-1.24.07-1.61.07-4.76s0-3.52-.07-4.76c-.05-1.02-.22-1.57-.36-1.94-.19-.49-.42-.83-.79-1.2a3.2 3.2 0 0 0-1.2-.79c-.37-.14-.92-.31-1.94-.36C15.52 4 15.15 4 12 4zm0 3.6a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8zm0 1.8a2.6 2.6 0 1 0 0 5.2 2.6 2.6 0 0 0 0-5.2zm4.6-2a1.03 1.03 0 1 1 0 2.06 1.03 1.03 0 0 1 0-2.06z"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.36 9.32-.09-.79-.17-2.01.04-2.88.19-.79 1.22-5.03 1.22-5.03s-.31-.62-.31-1.54c0-1.44.84-2.52 1.88-2.52.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.48-.25 1.04.52 1.89 1.55 1.89 1.86 0 3.29-1.96 3.29-4.79 0-2.5-1.8-4.25-4.36-4.25-2.97 0-4.71 2.23-4.71 4.53 0 .9.34 1.86.78 2.38a.31.31 0 0 1 .07.3c-.08.33-.26 1.04-.29 1.19-.05.19-.16.24-.36.14-1.35-.63-2.19-2.6-2.19-4.19 0-3.41 2.48-6.55 7.15-6.55 3.75 0 6.67 2.68 6.67 6.25 0 3.73-2.35 6.73-5.61 6.73-1.1 0-2.13-.57-2.48-1.24l-.68 2.57c-.24.95-.9 2.13-1.34 2.85.99.31 2.05.47 3.14.47 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14.5 2h2.9c.16 1.3.72 2.44 1.64 3.31.92.87 2.08 1.4 3.46 1.54v2.9c-1.4-.05-2.7-.42-3.9-1.1v6.79c0 3.3-2.68 5.99-6 5.99a5.99 5.99 0 0 1-6-5.99 5.99 5.99 0 0 1 6-6c.34 0 .67.03 1 .09v2.98a3.02 3.02 0 0 0-1-.17 3.1 3.1 0 0 0-3.1 3.1 3.1 3.1 0 0 0 3.1 3.1 3.1 3.1 0 0 0 3.1-3.1V2z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>Journal</h4>
+        <ul>
+          <li><a href="#journal">Art of Living</a></li>
+          <li><a href="#journal">Beauty &amp; Style</a></li>
+          <li><a href="#journal">Wellness &amp; Ritual</a></li>
+          <li><a href="#journal">Home &amp; Interiors</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>More</h4>
+        <ul>
+          <li><a href="#journal">Travel &amp; Escape</a></li>
+          <li><a href="#journal">Taste &amp; Table</a></li>
+          <li><a href="#partners">Our Partners</a></li>
+          <li><a href="#subscribe">Newsletter</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="#">About La Revue</a></li>
+          <li><a href="#">Work With Us</a></li>
+          <li><a href="#">Advertise</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> La Revue Journal. All rights reserved.</span>
+      <span class="disc">Affiliate disclosure: some articles on this site contain affiliate links. If you purchase through them, we may earn a commission at no extra cost to you.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobilePanel = document.getElementById('mobilePanel');
+
+  function closeMenu(){
+    hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobilePanel.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobilePanel.classList.toggle('open');
+    hamburger.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Scroll reveal (single, deliberate — section heads and cards fade up once)
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+  // Newsletter fake-submit
+  const subForm = document.getElementById('subForm');
+  const subConfirm = document.getElementById('subConfirm');
+  subForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    subConfirm.classList.add('show');
+    subForm.querySelector('input[type="email"]').value = '';
+  });
+</script>
+
+</body>
+</html>
