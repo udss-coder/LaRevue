@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Nootropics Edit: 10 Focus &amp; Clarity Formulas, Compared — La Reveu</title>
+<title>The 10 Best Nootropics for Absolute Focus and Sharpness, Compared — La Reveu</title>
 <meta name="description" content="Ten of the most talked-about nootropic and focus formulas — Mind Lab Pro, Onnit Alpha Brain, Neuriva, Qualia Mind, Thesis, NooCube, Performance Lab Mind, Four Sigmatic, Host Defense, and Genius Mushroom — compared for price, benefits, and daily use.">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -296,16 +296,28 @@
   .inline-figure img{ width: 100%; height: 100%; object-fit: cover; }
   .inline-figure figcaption{ font-size: 0.78rem; color: var(--ink-soft); padding-top: 10px; }
 
-  /* ---------- table of contents (Mashable-style) ---------- */
+  /* ---------- sticky table of contents wrapper ---------- */
+  /* This container spans from just below the hero/intro through the last
+     brand spotlight. The TOC sticks to the top of the viewport while the
+     user scrolls through it, then naturally releases the instant this
+     container ends — right before the full comparison table begins. */
+  .toc-sticky-container{
+    position: relative;
+  }
+
   .toc-wrap{
-    max-width: 560px;
-    margin: 8px auto 46px;
+    max-width: 640px;
+    margin: 0 auto;
     padding: 0 var(--gutter);
+    position: sticky;
+    top: 14px;
+    z-index: 45;
   }
   .toc{
     border: 1px solid var(--line-strong);
     background: var(--card);
-    padding: 22px 26px 20px;
+    padding: 14px 22px;
+    box-shadow: 0 8px 22px rgba(26,23,18,0.14);
   }
   .toc summary{
     cursor: pointer;
@@ -316,12 +328,13 @@
     gap: 12px;
     font-family: var(--serif);
     font-weight: 500;
-    font-size: 1.02rem;
+    font-size: 0.98rem;
     letter-spacing: 0.01em;
+    line-height: 1.3;
   }
   .toc summary::-webkit-details-marker{ display: none; }
   .toc summary .toc-chevron{
-    width: 11px; height: 11px;
+    width: 10px; height: 10px;
     border-right: 1.5px solid var(--rouge-deep);
     border-bottom: 1.5px solid var(--rouge-deep);
     transform: rotate(45deg);
@@ -330,12 +343,14 @@
   }
   .toc[open] summary .toc-chevron{ transform: rotate(-135deg); }
   .toc-list{
-    margin-top: 16px;
-    padding-top: 16px;
+    margin-top: 14px;
+    padding-top: 14px;
     border-top: 1px solid var(--line);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px 22px;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    max-height: min(58vh, 480px);
+    overflow-y: auto;
   }
   .toc-list li a{
     display: flex;
@@ -343,7 +358,7 @@
     gap: 9px;
     font-size: 0.87rem;
     color: var(--ink-soft);
-    padding: 6px 0;
+    padding: 6px 2px;
     border-bottom: 1px dotted transparent;
     transition: color 0.25s ease, border-color 0.25s ease;
   }
@@ -355,8 +370,10 @@
     font-size: 0.82rem;
     flex-shrink: 0;
   }
-  @media (max-width: 560px){
-    .toc-list{ grid-template-columns: 1fr; }
+  @media (max-width: 700px){
+    .toc-wrap{ top: 10px; padding: 0 16px; }
+    .toc{ padding: 12px 18px; }
+    .toc summary{ font-size: 0.92rem; }
   }
 
   /* ---------- product callout (affiliate, inline in article) ---------- */
@@ -637,12 +654,12 @@
   <!-- ============== HERO IMAGE ============== -->
   <figure class="article-hero">
     <div class="img-box">
-      <img src="assets/img/best-nootropics-2026-expert-tested/Gemini_Generated_Image_kh3rbskh3rbskh3r.jpg" alt="Minimalist supplement capsules and botanical extracts arranged on a rustic wooden table">
+      <img src="assets/img/best-nootropics-2026-expert-tested/Minimalist supplement capsules and botanical extracts arranged on a rustic wooden table.jpg" alt="Minimalist supplement capsules and botanical extracts arranged on a rustic wooden table">
     </div>
     <figcaption>A considered morning ritual: capsules, powders, and adaptogenic extracts built for clarity, not chaos.</figcaption>
   </figure>
 
-  <!-- ============== ARTICLE BODY ============== -->
+  <!-- ============== ARTICLE INTRO (ends before the sticky TOC begins) ============== -->
   <article class="article-body">
 
     <p>There is a particular kind of fatigue that has little to do with sleep. It is the mid-afternoon fog that settles in after back-to-back calls, the sensation of reading the same paragraph three times, the feeling of reaching for a fourth espresso only to feel more scattered, not less. It is no surprise, then, that the nootropics category — once a niche corner of the biohacking world — has become one of the most searched wellness terms of the year. Lion's mane lattes sit next to matcha at the coffee counter. L-theanine is stocked beside melatonin. Adaptogens have quietly moved from the fringe to the front of the shelf.</p>
@@ -654,9 +671,17 @@
       <span>— La Reveu Editors</span>
     </div>
 
-    <!-- ============== TABLE OF CONTENTS ============== -->
+  </article>
+
+  <!-- ============== STICKY TOC + FULL SPOTLIGHT SECTIONS ============== -->
+  <!-- The TOC below sticks to the top of the viewport for the length of this
+       wrapper, then releases automatically the instant the wrapper ends —
+       right before the full comparison table. -->
+  <div class="toc-sticky-container">
+
+    <!-- ============== TABLE OF CONTENTS (sticky, closed by default, single column) ============== -->
     <div class="toc-wrap">
-      <details class="toc" id="tocBox" open>
+      <details class="toc" id="tocBox">
         <summary>In this guide <span class="toc-chevron"></span></summary>
         <ul class="toc-list">
           <li><a href="#mindlabpro"><span class="n">01</span> Mind Lab Pro</a></li>
@@ -674,338 +699,341 @@
       </details>
     </div>
 
-    <p>A quick note before the edit: nootropics are dietary supplements, not medications, and none of the products below are intended to diagnose, treat, cure, or prevent any disease. If you're pregnant, nursing, managing a health condition, or taking prescription medication, it's worth a quick conversation with your doctor before adding a new formula to your routine. With that said — let's get into the edit.</p>
+    <article class="article-body" style="padding-top:0; margin-top: 80px;">
+      <p>A quick note before the edit: nootropics are dietary supplements, not medications, and none of the products below are intended to diagnose, treat, cure, or prevent any disease. If you're pregnant, nursing, managing a health condition, or taking prescription medication, it's worth a quick conversation with your doctor before adding a new formula to your routine. With that said — let's get into the edit.</p>
 
-    <div class="disclosure-note">
-      This article contains affiliate links. If you shop through them, La Reveu may earn a small commission at no extra cost to you — it's how we keep the journal independent and ad-light. Prices reflect single-bottle, one-time purchase pricing at the time of writing and may vary by retailer or promotion.
-    </div>
-
-  </article>
-
-  <!-- ============== 01 — MIND LAB PRO ============== -->
-  <section class="brand-spotlight" id="mindlabpro">
-    <div class="wrap">
-      <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?q=80&w=900&auto=format&fit=crop" alt="Mind Lab Pro nootropic capsules and botanical ingredients">
+      <div class="disclosure-note">
+        This article contains affiliate links. If you shop through them, La Reveu may earn a small commission at no extra cost to you — it's how we keep the journal independent and ad-light. Prices reflect single-bottle, one-time purchase pricing at the time of writing and may vary by retailer or promotion.
       </div>
-      <div>
-        <span class="rank">No. 01 in the edit</span>
-        <span class="kicker">The Universal All-Rounder</span>
-        <h3>Mind Lab Pro — one formula, every cognitive pathway</h3>
-        <p class="dek-line">Made by Opti-Nutra / Performance Lab, Mind Lab Pro built its reputation on doing the opposite of what most nootropics do: instead of one hero ingredient, it layers eleven research-informed nutrients to support memory, focus, mood, and long-term brain health all at once.</p>
-        <p class="body-p">The formula includes organic lion's mane mushroom, Cognizin citicoline, Bacopa monnieri, L-theanine, Rhodiola rosea, maritime pine bark, phosphatidylserine, and a B-vitamin complex, all encapsulated in a plant-based "Nutricaps" shell with no synthetic fillers, artificial colors, caffeine, or common allergens. It's this "brain food" breadth that earns it a reputation as the nootropic to reach for if you only want to keep one bottle on the shelf.</p>
+    </article>
 
-        <div class="fact-grid">
-          <div><h5>Price</h5><p>$69 / 60 capsules</p></div>
-          <div><h5>How to use</h5><p>2 capsules each morning, with or without food</p></div>
-          <div><h5>Best for</h5><p>Daily, all-purpose cognitive support</p></div>
-          <div><h5>Format</h5><p>Vegan capsule, caffeine-free</p></div>
+    <!-- ============== 01 — MIND LAB PRO ============== -->
+    <section class="brand-spotlight" id="mindlabpro">
+      <div class="wrap">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?q=80&w=900&auto=format&fit=crop" alt="Mind Lab Pro nootropic capsules and botanical ingredients">
         </div>
+        <div>
+          <span class="rank">No. 01 in the edit</span>
+          <span class="kicker">The Universal All-Rounder</span>
+          <h3>Mind Lab Pro — one formula, every cognitive pathway</h3>
+          <p class="dek-line">Made by Opti-Nutra / Performance Lab, Mind Lab Pro built its reputation on doing the opposite of what most nootropics do: instead of one hero ingredient, it layers eleven research-informed nutrients to support memory, focus, mood, and long-term brain health all at once.</p>
+          <p class="body-p">The formula includes organic lion's mane mushroom, Cognizin citicoline, Bacopa monnieri, L-theanine, Rhodiola rosea, maritime pine bark, phosphatidylserine, and a B-vitamin complex, all encapsulated in a plant-based "Nutricaps" shell with no synthetic fillers, artificial colors, caffeine, or common allergens. It's this "brain food" breadth that earns it a reputation as the nootropic to reach for if you only want to keep one bottle on the shelf.</p>
 
-        <ul class="pros-list">
-          <li><span class="tick">✓</span> Eleven ingredients chosen to support focus, memory, and mood without overlap</li>
-          <li><span class="tick">✓</span> Caffeine-free, so it layers cleanly on top of your usual coffee or tea</li>
-          <li><span class="tick">✓</span> Clean label: non-GMO, soy-free, gluten-free, and allergen-free</li>
-          <li><span class="tick">✓</span> Backed by a 30-day satisfaction window from the official site</li>
-        </ul>
+          <div class="fact-grid">
+            <div><h5>Price</h5><p>$69 / 60 capsules</p></div>
+            <div><h5>How to use</h5><p>2 capsules each morning, with or without food</p></div>
+            <div><h5>Best for</h5><p>Daily, all-purpose cognitive support</p></div>
+            <div><h5>Format</h5><p>Vegan capsule, caffeine-free</p></div>
+          </div>
 
-        <a href="https://www.mindlabpro.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Mind Lab Pro →</a>
-      </div>
-    </div>
-  </section>
+          <ul class="pros-list">
+            <li><span class="tick">✓</span> Eleven ingredients chosen to support focus, memory, and mood without overlap</li>
+            <li><span class="tick">✓</span> Caffeine-free, so it layers cleanly on top of your usual coffee or tea</li>
+            <li><span class="tick">✓</span> Clean label: non-GMO, soy-free, gluten-free, and allergen-free</li>
+            <li><span class="tick">✓</span> Backed by a 30-day satisfaction window from the official site</li>
+          </ul>
 
-  <!-- ============== 02 — ALPHA BRAIN ============== -->
-  <section class="brand-spotlight alt" id="alphabrain">
-    <div class="wrap">
-      <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&w=900&auto=format&fit=crop" alt="Onnit Alpha Brain style supplement capsules on a wooden surface">
-      </div>
-      <div>
-        <span class="rank">No. 02 in the edit</span>
-        <span class="kicker">The Cult-Favorite Stack</span>
-        <h3>Onnit Alpha Brain — the formula that popularized "flow state"</h3>
-        <p class="dek-line">Alpha Brain is arguably the nootropic that introduced the category to the mainstream. Built by Onnit and championed on countless podcasts, it organizes its ingredients into three purpose-built blends rather than a single list.</p>
-        <p class="body-p">The Flow Blend (L-theanine, oat straw extract, and phosphatidylserine) is designed to support a relaxed, alpha-wave state; the Focus Blend (Alpha-GPC, Bacopa monnieri, and huperzia serrata) targets acetylcholine pathways tied to memory and attention; the Fuel Blend rounds things out with L-leucine and pterostilbene. Two randomized clinical trials have been run on the formula, which is more research investment than most supplement brands make, and it's also NSF Certified for Sport, a detail competitive athletes appreciate.</p>
-
-        <div class="fact-grid">
-          <div><h5>Price</h5><p>$34.95 / 30 capsules · $79.95 / 90 capsules</p></div>
-          <div><h5>How to use</h5><p>2 capsules daily, morning or before a demanding task</p></div>
-          <div><h5>Best for</h5><p>Pre-work "flow state" focus sessions</p></div>
-          <div><h5>Format</h5><p>Capsule, gluten-free &amp; caffeine-free</p></div>
+          <a href="https://www.mindlabpro.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Mind Lab Pro →</a>
         </div>
-
-        <ul class="pros-list">
-          <li><span class="tick">✓</span> Three targeted blends instead of a single undifferentiated mix</li>
-          <li><span class="tick">✓</span> Supported by two company-run clinical trials</li>
-          <li><span class="tick">✓</span> NSF Certified for Sport — a plus for tested athletes</li>
-          <li><span class="tick">✓</span> Widely available at major retailers, not just direct-to-consumer</li>
-        </ul>
-
-        <a href="https://www.onnit.com/alpha-brain/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Alpha Brain →</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============== 03 — NEURIVA ============== -->
-  <section class="brand-spotlight" id="neuriva">
-    <div class="wrap">
-      <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=900&auto=format&fit=crop" alt="Coffee cherry fruit extract style ingredients for a brain supplement">
-      </div>
-      <div>
-        <span class="rank">No. 03 in the edit</span>
-        <span class="kicker">The Drugstore-Friendly Pick</span>
-        <h3>Neuriva Plus — brain support you can grab at the pharmacy</h3>
-        <p class="dek-line">If your ideal nootropic routine involves picking up a bottle at the same aisle as your multivitamin, Neuriva Plus is built for exactly that. It's one of the most widely distributed cognitive-support brands in the country, sold everywhere from Walmart to your neighborhood grocery pharmacy.</p>
-        <p class="body-p">Its hero ingredient is Neurofactor, a patented, decaffeinated whole-fruit extract of the coffee cherry (not the bean) that has been clinically studied for its ability to raise levels of brain-derived neurotrophic factor, or BDNF — a protein tied to the strength of connections between brain cells. It's paired with plant-sourced Sharp PS (phosphatidylserine) and a trio of B vitamins (B6, B12, and folate) to round out the formula. One capsule a day, taken at bedtime, is the full regimen.</p>
-
-        <div class="fact-grid">
-          <div><h5>Price</h5><p>Around $38–$42 / 30 capsules</p></div>
-          <div><h5>How to use</h5><p>1 capsule daily, ideally at bedtime</p></div>
-          <div><h5>Best for</h5><p>A low-effort, once-a-day habit</p></div>
-          <div><h5>Format</h5><p>Capsule (gummies also available)</p></div>
+    <!-- ============== 02 — ALPHA BRAIN ============== -->
+    <section class="brand-spotlight alt" id="alphabrain">
+      <div class="wrap">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&w=900&auto=format&fit=crop" alt="Onnit Alpha Brain style supplement capsules on a wooden surface">
         </div>
+        <div>
+          <span class="rank">No. 02 in the edit</span>
+          <span class="kicker">The Cult-Favorite Stack</span>
+          <h3>Onnit Alpha Brain — the formula that popularized "flow state"</h3>
+          <p class="dek-line">Alpha Brain is arguably the nootropic that introduced the category to the mainstream. Built by Onnit and championed on countless podcasts, it organizes its ingredients into three purpose-built blends rather than a single list.</p>
+          <p class="body-p">The Flow Blend (L-theanine, oat straw extract, and phosphatidylserine) is designed to support a relaxed, alpha-wave state; the Focus Blend (Alpha-GPC, Bacopa monnieri, and huperzia serrata) targets acetylcholine pathways tied to memory and attention; the Fuel Blend rounds things out with L-leucine and pterostilbene. Two randomized clinical trials have been run on the formula, which is more research investment than most supplement brands make, and it's also NSF Certified for Sport, a detail competitive athletes appreciate.</p>
 
-        <ul class="pros-list">
-          <li><span class="tick">✓</span> Just one capsule a day — one of the simplest routines on this list</li>
-          <li><span class="tick">✓</span> Neurofactor is a clinically studied, patented whole-fruit extract</li>
-          <li><span class="tick">✓</span> Decaffeinated, GMO-free, and free of the top 8 allergens</li>
-          <li><span class="tick">✓</span> Sold in most major pharmacies and grocery stores nationwide</li>
-        </ul>
+          <div class="fact-grid">
+            <div><h5>Price</h5><p>$34.95 / 30 capsules · $79.95 / 90 capsules</p></div>
+            <div><h5>How to use</h5><p>2 capsules daily, morning or before a demanding task</p></div>
+            <div><h5>Best for</h5><p>Pre-work "flow state" focus sessions</p></div>
+            <div><h5>Format</h5><p>Capsule, gluten-free &amp; caffeine-free</p></div>
+          </div>
 
-        <a href="https://www.neuriva.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Neuriva →</a>
+          <ul class="pros-list">
+            <li><span class="tick">✓</span> Three targeted blends instead of a single undifferentiated mix</li>
+            <li><span class="tick">✓</span> Supported by two company-run clinical trials</li>
+            <li><span class="tick">✓</span> NSF Certified for Sport — a plus for tested athletes</li>
+            <li><span class="tick">✓</span> Widely available at major retailers, not just direct-to-consumer</li>
+          </ul>
+
+          <a href="https://www.onnit.com/alpha-brain/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Alpha Brain →</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="pull-quote" style="margin: 0 auto; padding: 60px var(--gutter) 0; max-width: 620px;">
-    "Clarity isn't one ingredient. It's memory, mood, and stamina working in the same direction."
-    <span>— La Reveu Editors</span>
+    <!-- ============== 03 — NEURIVA ============== -->
+    <section class="brand-spotlight" id="neuriva">
+      <div class="wrap">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=900&auto=format&fit=crop" alt="Coffee cherry fruit extract style ingredients for a brain supplement">
+        </div>
+        <div>
+          <span class="rank">No. 03 in the edit</span>
+          <span class="kicker">The Drugstore-Friendly Pick</span>
+          <h3>Neuriva Plus — brain support you can grab at the pharmacy</h3>
+          <p class="dek-line">If your ideal nootropic routine involves picking up a bottle at the same aisle as your multivitamin, Neuriva Plus is built for exactly that. It's one of the most widely distributed cognitive-support brands in the country, sold everywhere from Walmart to your neighborhood grocery pharmacy.</p>
+          <p class="body-p">Its hero ingredient is Neurofactor, a patented, decaffeinated whole-fruit extract of the coffee cherry (not the bean) that has been clinically studied for its ability to raise levels of brain-derived neurotrophic factor, or BDNF — a protein tied to the strength of connections between brain cells. It's paired with plant-sourced Sharp PS (phosphatidylserine) and a trio of B vitamins (B6, B12, and folate) to round out the formula. One capsule a day, taken at bedtime, is the full regimen.</p>
+
+          <div class="fact-grid">
+            <div><h5>Price</h5><p>Around $38–$42 / 30 capsules</p></div>
+            <div><h5>How to use</h5><p>1 capsule daily, ideally at bedtime</p></div>
+            <div><h5>Best for</h5><p>A low-effort, once-a-day habit</p></div>
+            <div><h5>Format</h5><p>Capsule (gummies also available)</p></div>
+          </div>
+
+          <ul class="pros-list">
+            <li><span class="tick">✓</span> Just one capsule a day — one of the simplest routines on this list</li>
+            <li><span class="tick">✓</span> Neurofactor is a clinically studied, patented whole-fruit extract</li>
+            <li><span class="tick">✓</span> Decaffeinated, GMO-free, and free of the top 8 allergens</li>
+            <li><span class="tick">✓</span> Sold in most major pharmacies and grocery stores nationwide</li>
+          </ul>
+
+          <a href="https://www.neuriva.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Neuriva →</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="pull-quote" style="margin: 0 auto; padding: 60px var(--gutter) 0; max-width: 620px;">
+      "Clarity isn't one ingredient. It's memory, mood, and stamina working in the same direction."
+      <span>— La Reveu Editors</span>
+    </div>
+
+    <!-- ============== 04 — QUALIA MIND ============== -->
+    <section class="brand-spotlight alt" id="qualiamind">
+      <div class="wrap">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=900&auto=format&fit=crop" alt="Botanical extracts and vitamins used in a premium nootropic stack">
+        </div>
+        <div>
+          <span class="rank">No. 04 in the edit</span>
+          <span class="kicker">The Premium, Full-Spectrum Stack</span>
+          <h3>Qualia Mind — for the biohacker who wants everything in one scoop</h3>
+          <p class="dek-line">Made by Neurohacker Collective, Qualia Mind takes the maximalist approach to nootropics — nearly thirty ingredients in a single formula, built by a team of neurobiologists, MDs, and PhDs using what the brand calls a "complex systems" approach to formulation.</p>
+          <p class="body-p">The seven-capsule daily serving includes Cognizin citicoline, Alpha-GPC, Bacopa monnieri, Rhodiola rosea, taurine, L-theanine, organic Coffeeberry whole coffee fruit extract, PQQ, and a full spectrum of B vitamins, among others — designed to be taken five days on and two days off each week. It's a serious commitment, both in capsule count and in price, but for people who want a single, comprehensive stack rather than piecing one together themselves, it remains one of the most complete formulas on the market.</p>
+
+          <div class="fact-grid">
+            <div><h5>Price</h5><p>$89–$99 / 105 capsules (15 servings)</p></div>
+            <div><h5>How to use</h5><p>7 capsules each morning, 5 days on / 2 days off</p></div>
+            <div><h5>Best for</h5><p>Experienced users who want a full-spectrum stack</p></div>
+            <div><h5>Format</h5><p>Capsule, contains ~90mg natural caffeine</p></div>
+          </div>
+
+          <ul class="pros-list">
+            <li><span class="tick">✓</span> One of the most ingredient-dense formulas available, covering multiple pathways at once</li>
+            <li><span class="tick">✓</span> Formulated using branded, third-party-sourced ingredient forms like Cognizin</li>
+            <li><span class="tick">✓</span> Cycling schedule (5 days on, 2 off) is built into the brand's own directions</li>
+            <li><span class="tick">✓</span> Vegan-friendly and non-GMO</li>
+          </ul>
+
+          <a href="https://www.qualialife.com/products/qualia-mind" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Qualia Mind →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 05 — THESIS ============== -->
+    <section class="brand-spotlight" id="thesis">
+      <div class="wrap">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=900&auto=format&fit=crop" alt="Personalized nootropic supplement sachets and capsules">
+        </div>
+        <div>
+          <span class="rank">No. 05 in the edit</span>
+          <span class="kicker">The Personalized Formula</span>
+          <h3>Thesis — nootropics tailored to your own brain chemistry</h3>
+          <p class="dek-line">Thesis takes a fundamentally different approach: rather than selling one formula to everyone, it starts with a short quiz about your energy, sleep, caffeine habits, and cognitive goals, then ships a starter kit of several distinct blends for you to test.</p>
+          <p class="body-p">The line includes targeted formulas such as Clarity, Energy, Motivation, Creativity, and Logic — each built from a shortlist of over 127 vetted nootropic ingredients including ashwagandha, L-theanine, choline sources, and functional mushrooms. You spend the first month narrowing down which blend (or combination) actually moves the needle for you, with the option to consult a wellness coach along the way. It's the most hands-on, self-experimental option on this list — ideal for people who already know that a one-size-fits-all capsule doesn't quite fit them.</p>
+
+          <div class="fact-grid">
+            <div><h5>Price</h5><p>$79/month subscription (starter kit discounted)</p></div>
+            <div><h5>How to use</h5><p>Quiz-matched blend, taken on an empty stomach</p></div>
+            <div><h5>Best for</h5><p>Self-experimenters who want a tailored fit</p></div>
+            <div><h5>Format</h5><p>Powder sachets, several blend options</p></div>
+          </div>
+
+          <ul class="pros-list">
+            <li><span class="tick">✓</span> Personalized starter kit based on a short intake quiz</li>
+            <li><span class="tick">✓</span> Access to wellness coaches to help fine-tune your blend</li>
+            <li><span class="tick">✓</span> Formulas built from testing over 127 individual nootropic ingredients</li>
+            <li><span class="tick">✓</span> 30-day money-back guarantee if a blend isn't the right fit</li>
+          </ul>
+
+          <a href="https://takethesis.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Thesis →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 06 — NOOCUBE ============== -->
+    <section class="brand-spotlight alt" id="noocube">
+      <div class="wrap">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=900&auto=format&fit=crop" alt="Stimulant-free nootropic capsules on a light surface">
+        </div>
+        <div>
+          <span class="rank">No. 06 in the edit</span>
+          <span class="kicker">The Stimulant-Free Everyday Pick</span>
+          <h3>NooCube — a clean, caffeine-free daily formula</h3>
+          <p class="dek-line">NooCube has built a loyal following among people who want the benefits of a nootropic without any stimulant edge at all. The formula is entirely caffeine-free, positioning it as a gentler, more sustainable daily add-on rather than a jolt.</p>
+          <p class="body-p">Its ingredient list includes Bacopa monnieri, Alpha-GPC, huperzine A, L-theanine, L-tyrosine, and cat's claw extract — a combination aimed at memory, mental speed, and reduced brain fog without the jitteriness some people associate with stimulant-based focus aids. Because it's non-stimulant, many users find it layers naturally alongside their normal coffee routine rather than replacing it, and the brand backs it with one of the longer money-back windows in the category.</p>
+
+          <div class="fact-grid">
+            <div><h5>Price</h5><p>$64.99 / 60 capsules (1-month supply)</p></div>
+            <div><h5>How to use</h5><p>2 capsules daily with breakfast</p></div>
+            <div><h5>Best for</h5><p>Stimulant-sensitive users wanting daily clarity</p></div>
+            <div><h5>Format</h5><p>Capsule, 100% caffeine-free</p></div>
+          </div>
+
+          <ul class="pros-list">
+            <li><span class="tick">✓</span> Completely stimulant-free — no jitters, no crash</li>
+            <li><span class="tick">✓</span> Non-GMO formula developed with input from neuroscientists</li>
+            <li><span class="tick">✓</span> 60-day money-back guarantee, one of the longest in the category</li>
+            <li><span class="tick">✓</span> Free worldwide shipping direct from the official site</li>
+          </ul>
+
+          <a href="https://www.noocube.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop NooCube →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 07 — PERFORMANCE LAB MIND ============== -->
+    <section class="brand-spotlight" id="perflab">
+      <div class="wrap">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&w=900&auto=format&fit=crop" alt="Minimalist white nootropic capsules from a premium supplement brand">
+        </div>
+        <div>
+          <span class="rank">No. 07 in the edit</span>
+          <span class="kicker">The Minimalist Formula</span>
+          <h3>Performance Lab Mind — cognitive support in just four ingredients</h3>
+          <p class="dek-line">Where some brands build their case with two dozen ingredients, Performance Lab Mind takes the opposite stance: a tight, four-ingredient formula from the same company behind Mind Lab Pro, designed for people who want simplicity without sacrificing effectiveness.</p>
+          <p class="body-p">The formula centers on Cognizin citicoline to support brain-cell energy and phosphatidylcholine production, Sharp-PS Green (a sunflower-derived phosphatidylserine) for cell membrane support, maritime pine bark extract for circulation, and vitamin B6. It's encapsulated in the brand's signature NutriCaps for smoother absorption, and it's entirely free of soy, synthetic additives, and stimulants — a formula built for people who want one clean capsule to take with their morning coffee, not a research project.</p>
+
+          <div class="fact-grid">
+            <div><h5>Price</h5><p>Around $69 / 30 capsules</p></div>
+            <div><h5>How to use</h5><p>1–2 capsules daily, taken with a meal</p></div>
+            <div><h5>Best for</h5><p>Long, focused work sessions without a crash</p></div>
+            <div><h5>Format</h5><p>Vegan capsule, caffeine-free</p></div>
+          </div>
+
+          <ul class="pros-list">
+            <li><span class="tick">✓</span> Streamlined, four-ingredient formula — easy to understand at a glance</li>
+            <li><span class="tick">✓</span> Designed to support focus for up to 24 hours per the brand</li>
+            <li><span class="tick">✓</span> Free from soy, gluten, and synthetic additives</li>
+            <li><span class="tick">✓</span> Pairs well with the brand's other Performance Lab formulas for stacking</li>
+          </ul>
+
+          <a href="https://www.performancelab.com/products/mind" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Performance Lab Mind →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 08 — FOUR SIGMATIC ============== -->
+    <section class="brand-spotlight alt" id="foursigmatic">
+      <div class="wrap">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1580933073521-dc49ac0d4e6a?q=80&w=900&auto=format&fit=crop" alt="Lion's mane mushroom powder and elixir in a ceramic cup">
+        </div>
+        <div>
+          <span class="rank">No. 08 in the edit</span>
+          <span class="kicker">The Mushroom Ritual, Reimagined</span>
+          <h3>Four Sigmatic — lion's mane, made for your mug</h3>
+          <p class="dek-line">Four Sigmatic helped bring functional mushrooms into the mainstream morning routine, and its Lion's Mane Elixir remains a category favorite for people who want their nootropic to feel like a ritual rather than a pill.</p>
+          <p class="body-p">Each sachet blends dual-extracted organic lion's mane mushroom with organic chaga, a fellow adaptogenic mushroom prized for its antioxidant content, whisked into a warm, subtly earthy drink that fits neatly into a tea-and-coffee routine. It's naturally caffeine-free, which makes it an easy afternoon addition when a second espresso feels like too much, and the brand's dual-extraction process is designed to draw out both the water-soluble and fat-soluble compounds in the mushroom fruiting body.</p>
+
+          <div class="fact-grid">
+            <div><h5>Price</h5><p>Around $22–$25 / 20 sachets</p></div>
+            <div><h5>How to use</h5><p>1 sachet stirred into hot water, morning or afternoon</p></div>
+            <div><h5>Best for</h5><p>A caffeine-free, ritual-style focus drink</p></div>
+            <div><h5>Format</h5><p>Powder sachet, mixes into any hot beverage</p></div>
+          </div>
+
+          <ul class="pros-list">
+            <li><span class="tick">✓</span> Dual-extracted organic lion's mane paired with chaga mushroom</li>
+            <li><span class="tick">✓</span> 100% naturally caffeine-free — friendly for afternoon or evening use</li>
+            <li><span class="tick">✓</span> Doubles as a comforting drink, not just a supplement</li>
+            <li><span class="tick">✓</span> Organic and Non-GMO Project Verified</li>
+          </ul>
+
+          <a href="https://us.foursigmatic.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Four Sigmatic →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 09 — HOST DEFENSE ============== -->
+    <section class="brand-spotlight" id="hostdefense">
+      <div class="wrap">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1611071536987-4d9d5c8a7f7a?q=80&w=900&auto=format&fit=crop" alt="Lion's mane mushroom extract capsules, mycology-focused supplement">
+        </div>
+        <div>
+          <span class="rank">No. 09 in the edit</span>
+          <span class="kicker">The Mycologist-Founded Original</span>
+          <h3>Host Defense — lion's mane from the brand that built the category</h3>
+          <p class="dek-line">Founded by mycologist Paul Stamets, Host Defense is one of the longest-standing names in functional mushroom supplements, and its Lion's Mane capsules remain a benchmark for people who care about sourcing as much as formulation.</p>
+          <p class="body-p">The formula is built from certified-organic lion's mane grown on Stamets' own farms using myceliated brown rice, a full-spectrum approach the brand favors over isolated extracts, in the belief that the mushroom's naturally occurring compounds work best together. It's a straightforward, single-ingredient supplement — no proprietary blends, no stimulants, just lion's mane in a capsule — which makes it an easy, low-commitment way to work a mushroom nootropic into a routine that's already full of other supplements.</p>
+
+          <div class="fact-grid">
+            <div><h5>Price</h5><p>Around $28–$32 / 120 capsules</p></div>
+            <div><h5>How to use</h5><p>2 capsules, 1–3 times daily</p></div>
+            <div><h5>Best for</h5><p>A trusted, single-ingredient mushroom staple</p></div>
+            <div><h5>Format</h5><p>Vegetarian capsule</p></div>
+          </div>
+
+          <ul class="pros-list">
+            <li><span class="tick">✓</span> Founded by renowned mycologist Paul Stamets</li>
+            <li><span class="tick">✓</span> Certified organic, full-spectrum lion's mane — no isolates</li>
+            <li><span class="tick">✓</span> Simple single-ingredient formula, easy to stack with anything else</li>
+            <li><span class="tick">✓</span> Grown and produced on the brand's own certified-organic farms</li>
+          </ul>
+
+          <a href="https://hostdefense.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Host Defense →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 10 — GENIUS MUSHROOM ============== -->
+    <section class="brand-spotlight alt" id="genius">
+      <div class="wrap">
+        <div class="img-box">
+          <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=900&auto=format&fit=crop" alt="Triple mushroom blend supplement capsules, lion's mane cordyceps reishi">
+        </div>
+        <div>
+          <span class="rank">No. 10 in the edit</span>
+          <span class="kicker">The Triple-Mushroom Value Pick</span>
+          <h3>Genius Mushroom — three adaptogens, one accessible bottle</h3>
+          <p class="dek-line">Genius Mushroom, from The Genius Brand, rounds out our edit as the most budget-friendly full-mushroom formula, combining three of the most researched adaptogenic mushrooms into a single daily capsule.</p>
+          <p class="body-p">The formula blends organic lion's mane for cognitive support, cordyceps for energy and stamina, and reishi for calm, stress-resilience support — a trio chosen to cover mental clarity, sustained energy, and relaxation in one bottle rather than three. It's a vegan, non-GMO capsule made without synthetic fillers, and its accessible price point has made it a popular entry point for people who are mushroom-curious but not ready to commit to a premium multi-ingredient stack.</p>
+
+          <div class="fact-grid">
+            <div><h5>Price</h5><p>Around $20–$25 / 40 capsules</p></div>
+            <div><h5>How to use</h5><p>2 capsules daily, with or without food</p></div>
+            <div><h5>Best for</h5><p>An affordable entry into mushroom nootropics</p></div>
+            <div><h5>Format</h5><p>Vegan capsule</p></div>
+          </div>
+
+          <ul class="pros-list">
+            <li><span class="tick">✓</span> Combines lion's mane, cordyceps, and reishi in one formula</li>
+            <li><span class="tick">✓</span> One of the more accessible price points in the mushroom category</li>
+            <li><span class="tick">✓</span> Vegan, non-GMO, and free of synthetic fillers</li>
+            <li><span class="tick">✓</span> Backed by a money-back guarantee direct from the brand</li>
+          </ul>
+
+          <a href="https://thegeniusbrand.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Genius Mushroom →</a>
+        </div>
+      </div>
+    </section>
+
   </div>
-
-  <!-- ============== 04 — QUALIA MIND ============== -->
-  <section class="brand-spotlight alt" id="qualiamind">
-    <div class="wrap">
-      <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=900&auto=format&fit=crop" alt="Botanical extracts and vitamins used in a premium nootropic stack">
-      </div>
-      <div>
-        <span class="rank">No. 04 in the edit</span>
-        <span class="kicker">The Premium, Full-Spectrum Stack</span>
-        <h3>Qualia Mind — for the biohacker who wants everything in one scoop</h3>
-        <p class="dek-line">Made by Neurohacker Collective, Qualia Mind takes the maximalist approach to nootropics — nearly thirty ingredients in a single formula, built by a team of neurobiologists, MDs, and PhDs using what the brand calls a "complex systems" approach to formulation.</p>
-        <p class="body-p">The seven-capsule daily serving includes Cognizin citicoline, Alpha-GPC, Bacopa monnieri, Rhodiola rosea, taurine, L-theanine, organic Coffeeberry whole coffee fruit extract, PQQ, and a full spectrum of B vitamins, among others — designed to be taken five days on and two days off each week. It's a serious commitment, both in capsule count and in price, but for people who want a single, comprehensive stack rather than piecing one together themselves, it remains one of the most complete formulas on the market.</p>
-
-        <div class="fact-grid">
-          <div><h5>Price</h5><p>$89–$99 / 105 capsules (15 servings)</p></div>
-          <div><h5>How to use</h5><p>7 capsules each morning, 5 days on / 2 days off</p></div>
-          <div><h5>Best for</h5><p>Experienced users who want a full-spectrum stack</p></div>
-          <div><h5>Format</h5><p>Capsule, contains ~90mg natural caffeine</p></div>
-        </div>
-
-        <ul class="pros-list">
-          <li><span class="tick">✓</span> One of the most ingredient-dense formulas available, covering multiple pathways at once</li>
-          <li><span class="tick">✓</span> Formulated using branded, third-party-sourced ingredient forms like Cognizin</li>
-          <li><span class="tick">✓</span> Cycling schedule (5 days on, 2 off) is built into the brand's own directions</li>
-          <li><span class="tick">✓</span> Vegan-friendly and non-GMO</li>
-        </ul>
-
-        <a href="https://www.qualialife.com/products/qualia-mind" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Qualia Mind →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== 05 — THESIS ============== -->
-  <section class="brand-spotlight" id="thesis">
-    <div class="wrap">
-      <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=900&auto=format&fit=crop" alt="Personalized nootropic supplement sachets and capsules">
-      </div>
-      <div>
-        <span class="rank">No. 05 in the edit</span>
-        <span class="kicker">The Personalized Formula</span>
-        <h3>Thesis — nootropics tailored to your own brain chemistry</h3>
-        <p class="dek-line">Thesis takes a fundamentally different approach: rather than selling one formula to everyone, it starts with a short quiz about your energy, sleep, caffeine habits, and cognitive goals, then ships a starter kit of several distinct blends for you to test.</p>
-        <p class="body-p">The line includes targeted formulas such as Clarity, Energy, Motivation, Creativity, and Logic — each built from a shortlist of over 127 vetted nootropic ingredients including ashwagandha, L-theanine, choline sources, and functional mushrooms. You spend the first month narrowing down which blend (or combination) actually moves the needle for you, with the option to consult a wellness coach along the way. It's the most hands-on, self-experimental option on this list — ideal for people who already know that a one-size-fits-all capsule doesn't quite fit them.</p>
-
-        <div class="fact-grid">
-          <div><h5>Price</h5><p>$79/month subscription (starter kit discounted)</p></div>
-          <div><h5>How to use</h5><p>Quiz-matched blend, taken on an empty stomach</p></div>
-          <div><h5>Best for</h5><p>Self-experimenters who want a tailored fit</p></div>
-          <div><h5>Format</h5><p>Powder sachets, several blend options</p></div>
-        </div>
-
-        <ul class="pros-list">
-          <li><span class="tick">✓</span> Personalized starter kit based on a short intake quiz</li>
-          <li><span class="tick">✓</span> Access to wellness coaches to help fine-tune your blend</li>
-          <li><span class="tick">✓</span> Formulas built from testing over 127 individual nootropic ingredients</li>
-          <li><span class="tick">✓</span> 30-day money-back guarantee if a blend isn't the right fit</li>
-        </ul>
-
-        <a href="https://takethesis.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Thesis →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== 06 — NOOCUBE ============== -->
-  <section class="brand-spotlight alt" id="noocube">
-    <div class="wrap">
-      <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=900&auto=format&fit=crop" alt="Stimulant-free nootropic capsules on a light surface">
-      </div>
-      <div>
-        <span class="rank">No. 06 in the edit</span>
-        <span class="kicker">The Stimulant-Free Everyday Pick</span>
-        <h3>NooCube — a clean, caffeine-free daily formula</h3>
-        <p class="dek-line">NooCube has built a loyal following among people who want the benefits of a nootropic without any stimulant edge at all. The formula is entirely caffeine-free, positioning it as a gentler, more sustainable daily add-on rather than a jolt.</p>
-        <p class="body-p">Its ingredient list includes Bacopa monnieri, Alpha-GPC, huperzine A, L-theanine, L-tyrosine, and cat's claw extract — a combination aimed at memory, mental speed, and reduced brain fog without the jitteriness some people associate with stimulant-based focus aids. Because it's non-stimulant, many users find it layers naturally alongside their normal coffee routine rather than replacing it, and the brand backs it with one of the longer money-back windows in the category.</p>
-
-        <div class="fact-grid">
-          <div><h5>Price</h5><p>$64.99 / 60 capsules (1-month supply)</p></div>
-          <div><h5>How to use</h5><p>2 capsules daily with breakfast</p></div>
-          <div><h5>Best for</h5><p>Stimulant-sensitive users wanting daily clarity</p></div>
-          <div><h5>Format</h5><p>Capsule, 100% caffeine-free</p></div>
-        </div>
-
-        <ul class="pros-list">
-          <li><span class="tick">✓</span> Completely stimulant-free — no jitters, no crash</li>
-          <li><span class="tick">✓</span> Non-GMO formula developed with input from neuroscientists</li>
-          <li><span class="tick">✓</span> 60-day money-back guarantee, one of the longest in the category</li>
-          <li><span class="tick">✓</span> Free worldwide shipping direct from the official site</li>
-        </ul>
-
-        <a href="https://www.noocube.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop NooCube →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== 07 — PERFORMANCE LAB MIND ============== -->
-  <section class="brand-spotlight" id="perflab">
-    <div class="wrap">
-      <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&w=900&auto=format&fit=crop" alt="Minimalist white nootropic capsules from a premium supplement brand">
-      </div>
-      <div>
-        <span class="rank">No. 07 in the edit</span>
-        <span class="kicker">The Minimalist Formula</span>
-        <h3>Performance Lab Mind — cognitive support in just four ingredients</h3>
-        <p class="dek-line">Where some brands build their case with two dozen ingredients, Performance Lab Mind takes the opposite stance: a tight, four-ingredient formula from the same company behind Mind Lab Pro, designed for people who want simplicity without sacrificing effectiveness.</p>
-        <p class="body-p">The formula centers on Cognizin citicoline to support brain-cell energy and phosphatidylcholine production, Sharp-PS Green (a sunflower-derived phosphatidylserine) for cell membrane support, maritime pine bark extract for circulation, and vitamin B6. It's encapsulated in the brand's signature NutriCaps for smoother absorption, and it's entirely free of soy, synthetic additives, and stimulants — a formula built for people who want one clean capsule to take with their morning coffee, not a research project.</p>
-
-        <div class="fact-grid">
-          <div><h5>Price</h5><p>Around $69 / 30 capsules</p></div>
-          <div><h5>How to use</h5><p>1–2 capsules daily, taken with a meal</p></div>
-          <div><h5>Best for</h5><p>Long, focused work sessions without a crash</p></div>
-          <div><h5>Format</h5><p>Vegan capsule, caffeine-free</p></div>
-        </div>
-
-        <ul class="pros-list">
-          <li><span class="tick">✓</span> Streamlined, four-ingredient formula — easy to understand at a glance</li>
-          <li><span class="tick">✓</span> Designed to support focus for up to 24 hours per the brand</li>
-          <li><span class="tick">✓</span> Free from soy, gluten, and synthetic additives</li>
-          <li><span class="tick">✓</span> Pairs well with the brand's other Performance Lab formulas for stacking</li>
-        </ul>
-
-        <a href="https://www.performancelab.com/products/mind" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Performance Lab Mind →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== 08 — FOUR SIGMATIC ============== -->
-  <section class="brand-spotlight alt" id="foursigmatic">
-    <div class="wrap">
-      <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1580933073521-dc49ac0d4e6a?q=80&w=900&auto=format&fit=crop" alt="Lion's mane mushroom powder and elixir in a ceramic cup">
-      </div>
-      <div>
-        <span class="rank">No. 08 in the edit</span>
-        <span class="kicker">The Mushroom Ritual, Reimagined</span>
-        <h3>Four Sigmatic — lion's mane, made for your mug</h3>
-        <p class="dek-line">Four Sigmatic helped bring functional mushrooms into the mainstream morning routine, and its Lion's Mane Elixir remains a category favorite for people who want their nootropic to feel like a ritual rather than a pill.</p>
-        <p class="body-p">Each sachet blends dual-extracted organic lion's mane mushroom with organic chaga, a fellow adaptogenic mushroom prized for its antioxidant content, whisked into a warm, subtly earthy drink that fits neatly into a tea-and-coffee routine. It's naturally caffeine-free, which makes it an easy afternoon addition when a second espresso feels like too much, and the brand's dual-extraction process is designed to draw out both the water-soluble and fat-soluble compounds in the mushroom fruiting body.</p>
-
-        <div class="fact-grid">
-          <div><h5>Price</h5><p>Around $22–$25 / 20 sachets</p></div>
-          <div><h5>How to use</h5><p>1 sachet stirred into hot water, morning or afternoon</p></div>
-          <div><h5>Best for</h5><p>A caffeine-free, ritual-style focus drink</p></div>
-          <div><h5>Format</h5><p>Powder sachet, mixes into any hot beverage</p></div>
-        </div>
-
-        <ul class="pros-list">
-          <li><span class="tick">✓</span> Dual-extracted organic lion's mane paired with chaga mushroom</li>
-          <li><span class="tick">✓</span> 100% naturally caffeine-free — friendly for afternoon or evening use</li>
-          <li><span class="tick">✓</span> Doubles as a comforting drink, not just a supplement</li>
-          <li><span class="tick">✓</span> Organic and Non-GMO Project Verified</li>
-        </ul>
-
-        <a href="https://us.foursigmatic.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Four Sigmatic →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== 09 — HOST DEFENSE ============== -->
-  <section class="brand-spotlight" id="hostdefense">
-    <div class="wrap">
-      <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1611071536987-4d9d5c8a7f7a?q=80&w=900&auto=format&fit=crop" alt="Lion's mane mushroom extract capsules, mycology-focused supplement">
-      </div>
-      <div>
-        <span class="rank">No. 09 in the edit</span>
-        <span class="kicker">The Mycologist-Founded Original</span>
-        <h3>Host Defense — lion's mane from the brand that built the category</h3>
-        <p class="dek-line">Founded by mycologist Paul Stamets, Host Defense is one of the longest-standing names in functional mushroom supplements, and its Lion's Mane capsules remain a benchmark for people who care about sourcing as much as formulation.</p>
-        <p class="body-p">The formula is built from certified-organic lion's mane grown on Stamets' own farms using myceliated brown rice, a full-spectrum approach the brand favors over isolated extracts, in the belief that the mushroom's naturally occurring compounds work best together. It's a straightforward, single-ingredient supplement — no proprietary blends, no stimulants, just lion's mane in a capsule — which makes it an easy, low-commitment way to work a mushroom nootropic into a routine that's already full of other supplements.</p>
-
-        <div class="fact-grid">
-          <div><h5>Price</h5><p>Around $28–$32 / 120 capsules</p></div>
-          <div><h5>How to use</h5><p>2 capsules, 1–3 times daily</p></div>
-          <div><h5>Best for</h5><p>A trusted, single-ingredient mushroom staple</p></div>
-          <div><h5>Format</h5><p>Vegetarian capsule</p></div>
-        </div>
-
-        <ul class="pros-list">
-          <li><span class="tick">✓</span> Founded by renowned mycologist Paul Stamets</li>
-          <li><span class="tick">✓</span> Certified organic, full-spectrum lion's mane — no isolates</li>
-          <li><span class="tick">✓</span> Simple single-ingredient formula, easy to stack with anything else</li>
-          <li><span class="tick">✓</span> Grown and produced on the brand's own certified-organic farms</li>
-        </ul>
-
-        <a href="https://hostdefense.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Host Defense →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============== 10 — GENIUS MUSHROOM ============== -->
-  <section class="brand-spotlight alt" id="genius">
-    <div class="wrap">
-      <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=900&auto=format&fit=crop" alt="Triple mushroom blend supplement capsules, lion's mane cordyceps reishi">
-      </div>
-      <div>
-        <span class="rank">No. 10 in the edit</span>
-        <span class="kicker">The Triple-Mushroom Value Pick</span>
-        <h3>Genius Mushroom — three adaptogens, one accessible bottle</h3>
-        <p class="dek-line">Genius Mushroom, from The Genius Brand, rounds out our edit as the most budget-friendly full-mushroom formula, combining three of the most researched adaptogenic mushrooms into a single daily capsule.</p>
-        <p class="body-p">The formula blends organic lion's mane for cognitive support, cordyceps for energy and stamina, and reishi for calm, stress-resilience support — a trio chosen to cover mental clarity, sustained energy, and relaxation in one bottle rather than three. It's a vegan, non-GMO capsule made without synthetic fillers, and its accessible price point has made it a popular entry point for people who are mushroom-curious but not ready to commit to a premium multi-ingredient stack.</p>
-
-        <div class="fact-grid">
-          <div><h5>Price</h5><p>Around $20–$25 / 40 capsules</p></div>
-          <div><h5>How to use</h5><p>2 capsules daily, with or without food</p></div>
-          <div><h5>Best for</h5><p>An affordable entry into mushroom nootropics</p></div>
-          <div><h5>Format</h5><p>Vegan capsule</p></div>
-        </div>
-
-        <ul class="pros-list">
-          <li><span class="tick">✓</span> Combines lion's mane, cordyceps, and reishi in one formula</li>
-          <li><span class="tick">✓</span> One of the more accessible price points in the mushroom category</li>
-          <li><span class="tick">✓</span> Vegan, non-GMO, and free of synthetic fillers</li>
-          <li><span class="tick">✓</span> Backed by a money-back guarantee direct from the brand</li>
-        </ul>
-
-        <a href="https://thegeniusbrand.com/" class="btn-solid" rel="sponsored noopener" target="_blank">Shop Genius Mushroom →</a>
-      </div>
-    </div>
-  </section>
+  <!-- ============== END STICKY TOC WRAPPER — TOC releases right here ============== -->
 
   <!-- ============== FULL COMPARISON TABLE ============== -->
   <section class="section" id="comparetable" aria-label="Full comparison table">
@@ -1281,35 +1309,15 @@
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ---------- TOC: collapse to closed on small screens after first load ----------
+  // ---------- TOC: auto-close after navigating to a section ----------
+  // Since the TOC is now sticky, closing it after a click keeps it compact
+  // instead of leaving a tall open panel floating over the content.
   const tocBox = document.getElementById('tocBox');
-  if (tocBox && window.matchMedia('(max-width: 700px)').matches) {
-    tocBox.removeAttribute('open');
-  }
-
-  // ---------- Smooth-close mobile panel/TOC on link click (mobile TOC UX) ----------
   document.querySelectorAll('.toc-list a').forEach(link => {
     link.addEventListener('click', () => {
-      if (window.matchMedia('(max-width: 700px)').matches && tocBox) {
-        setTimeout(() => tocBox.removeAttribute('open'), 300);
-      }
+      if (tocBox) setTimeout(() => tocBox.removeAttribute('open'), 300);
     });
   });
-
-  // ---------- Newsletter Form Interaction (kept for parity, hidden by default) ----------
-  const subBtn = document.getElementById('subBtn');
-  const emailInput = document.getElementById('emailInput');
-  const subConfirm = document.getElementById('subConfirm');
-
-  if (subBtn && emailInput) {
-    subBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (emailInput.value && emailInput.value.includes('@')) {
-        subConfirm.classList.add('show');
-        emailInput.value = '';
-      }
-    });
-  }
 </script>
 
 </body>
