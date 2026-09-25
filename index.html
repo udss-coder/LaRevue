@@ -141,6 +141,73 @@
   }
   .btn-line:hover{ background: var(--ink); color: var(--paper); }
 
+  /* ---------- language switcher (desktop) ---------- */
+  .lang-switch{
+    position: relative;
+  }
+  .lang-btn{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: none;
+    border: 1px solid var(--line-strong);
+    padding: 9px 16px;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    white-space: nowrap;
+  }
+  .lang-btn:hover{ border-color: var(--ink); }
+  .lang-btn .caret{
+    font-size: 0.6rem;
+    line-height: 1;
+    color: var(--taupe);
+    transition: ease-in .2s;
+  }
+  .lang-switch.open .lang-btn .caret{ transform: rotate(180deg); }
+
+  .lang-dropdown{
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    min-width: 150px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: 0 14px 34px rgba(26,23,18,0.10);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    z-index: 70;
+  }
+  .lang-switch.open .lang-dropdown{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .lang-dropdown button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 11px 16px;
+    background: none;
+    border: none;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .lang-dropdown button:hover{ background: var(--card); color: var(--ink); }
+  .lang-dropdown button.active{ color: var(--rouge-deep); }
+  .lang-dropdown button.active::after{ content: "✓"; font-size: 0.75rem; }
+
   .hamburger{
     display: none;
     flex-direction: column;
@@ -193,9 +260,48 @@
     font-size: 0.85rem;
   }
 
+  /* ---------- language switcher (mobile panel) ---------- */
+  .mobile-lang{
+    margin-top: 34px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+  .mobile-lang-label{
+    display: block;
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 14px;
+  }
+  .mobile-lang-options{
+    display: flex;
+    gap: 10px;
+  }
+  .mobile-lang-option{
+    flex: 1;
+    background: none;
+    border: 1px solid var(--line-strong);
+    padding: 11px 12px;
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+  }
+  .mobile-lang-option.active{
+    border-color: var(--ink);
+    color: var(--ink);
+    background: var(--card);
+  }
+
   @media (max-width: 860px){
     .nav-links{ display: none; }
     .nav-cta .btn-line{ display: none; }
+    .nav-cta .lang-switch{ display: none; }
     .hamburger{ display: flex; }
     .mobile-panel{ display: block; }
   }
@@ -626,6 +732,18 @@
 
     <div class="nav-cta">
       <a href="contact.html" class="btn-line">Become a Sponsor</a>
+
+      <div class="lang-switch" id="langSwitch">
+        <button type="button" class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+          <span id="langLabel">EN</span>
+          <span class="caret">▾</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown" role="listbox">
+          <button type="button" class="lang-option active" data-lang="en" role="option" aria-selected="true">English</button>
+          <button type="button" class="lang-option" data-lang="fr" role="option" aria-selected="false">Français</button>
+        </div>
+      </div>
+
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
         <span></span><span></span><span></span>
       </button>
@@ -641,6 +759,15 @@
     <!-- <li><a href="#subscribe" class="mobile-link">Subscribe</a></li> -->
   </ul>
   <a href="contact.html" class="btn-line mobile-link">Become a Sponsor</a>
+</div>
+
+  <div class="mobile-lang">
+    <span class="mobile-lang-label">Language</span>
+    <div class="mobile-lang-options">
+      <button type="button" class="mobile-lang-option active" data-lang="en">English</button>
+      <button type="button" class="mobile-lang-option" data-lang="fr">Français</button>
+    </div>
+  </div>
 </div>
 
 <main id="top">
@@ -678,16 +805,16 @@
         <article class="journal-card card--feature reveal">
           <div class="img-box">
             <span>
-              <a href="best-nootropics-2026-expert-tested.html">
-                <img src="assets/img/best-nootropics-2026-expert-tested/Minimalist supplement capsules and botanical extracts arranged on a rustic wooden table.jpg" alt="Minimalist supplement capsules and botanical extracts arranged on a rustic wooden table">
+              <a href="kemoway-article.html">
+                <img src="assets/img/Young woman and Kemoway e-bike.jpg" alt="A smiling young woman and her Kemoway e-bike">
               </a>
             </span>
           </div>
           <div class="body">
-            <span class="cat">Wellness & Ritual</span>
-            <h3>The 10 best nootropics for absolute focus and sharpness</h3>
-            <p>From lion's mane and L-theanine to full-spectrum cognitive stacks, we lined up ten of the most talked-about brain-support brands for price, benefits, and everyday use — no favorites, just the facts.</p>
-            <div class="rd"><span><a href="nordly-article.html">Read the edit</a></span><span class="arrow"><a href="nordly-article.html">→</a></span></div>
+            <span class="cat">Eco-mobility & Lifestyle</span>
+            <h3>Discover urban freedom with Kemoway e-bikes</h3>
+            <p>The rides we take without a second thought — from the effortless morning glide through town to the one electric bike that makes every other commute feel like ordinary work.</p>
+            <div class="rd"><span><a href="kemoway-article.html">Read the article</a></span><span class="arrow"><a href="kemoway-article.html">→</a></span></div>
           </div>
         </article>
 
@@ -708,16 +835,16 @@
         <article class="journal-card card--tall reveal">
           <div class="img-box">
             <span>
-              <a href="nordly-article.html">
-                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop" alt="A softly lit living room styled with linen and ceramics">
+              <a href="/best-nootropics-2026-expert-tested">
+                <img src="assets/img/best-nootropics-2026-expert-tested/Minimalist supplement capsules and botanical extracts arranged on a rustic wooden table.jpg" alt="Minimalist supplement capsules and botanical extracts arranged on a rustic wooden table">
               </a>
             </span>
           </div>
           <div class="body">
-            <span class="cat">Art of Living</span>
-            <h3>The unhurried home: a season of slower mornings</h3>
-            <p>Linen that softens with age, ceramics thrown by hand, and the small rituals that make a Tuesday feel considered — this season's edit of the objects worth keeping.</p>
-            <div class="rd"><span><a href="nordly-article.html">Read the edit</a></span><span class="arrow"><a href="nordly-article.html">→</a></span></div>
+            <span class="cat">Wellness &amp; Ritual</span>
+            <h3>The 10 best nootropics for absolute focus and sharpness</h3>
+            <p>From lion's mane and L-theanine to full-spectrum cognitive stacks, we lined up ten of the most talked-about brain-support brands for price, benefits, and everyday use — no favorites, just the facts.</p>
+            <div class="rd"><span><a href="/nordly-article">Read the edit</a></span><span class="arrow"><a href="/nordly-article">→</a></span></div>
           </div>
         </article>
 
@@ -733,7 +860,7 @@
           </div>
         </article> -->
 
-        <article class="journal-card card--wide reveal">
+        <!-- <article class="journal-card card--wide reveal">
           <div class="img-box">
             <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=900&auto=format&fit=crop" alt="A sunlit interior with sculptural furniture">
           </div>
@@ -742,6 +869,22 @@
             <h3>Furnishing a room that ages well</h3>
             <p>Pieces built to outlast a trend cycle, and the small edits that make a rented room feel entirely yours.</p>
             <div class="rd"><span>Read the edit</span><span class="arrow">→</span></div>
+          </div>
+        </article> -->
+
+        <article class="journal-card card--wide reveal">
+          <div class="img-box">
+            <span>
+              <a href="nordly-article.html">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop" alt="A softly lit living room styled with linen and ceramics">
+              </a>
+            </span>
+          </div>
+          <div class="body">
+            <span class="cat">Art of Living</span>
+            <h3>The unhurried home: a season of slower mornings</h3>
+            <p>Linen that softens with age, ceramics thrown by hand, and the small rituals that make a Tuesday feel considered — this season's edit of the objects worth keeping.</p>
+            <div class="rd"><span><a href="nordly-article.html">Read the edit</a></span><span class="arrow"><a href="nordly-article.html">→</a></span></div>
           </div>
         </article>
 
@@ -928,6 +1071,51 @@
     link.addEventListener('click', closeMenu);
   });
 
+  // Language switcher (desktop dropdown + mobile menu)
+  const langSwitch = document.getElementById('langSwitch');
+  const langBtn = document.getElementById('langBtn');
+  const langLabel = document.getElementById('langLabel');
+  const langOptions = document.querySelectorAll('.lang-option');
+  const mobileLangOptions = document.querySelectorAll('.mobile-lang-option');
+
+  function setLanguage(lang){
+    langOptions.forEach(btn => {
+      const isActive = btn.dataset.lang === lang;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', String(isActive));
+    });
+    mobileLangOptions.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    langLabel.textContent = lang.toUpperCase();
+    document.documentElement.setAttribute('lang', lang);
+  }
+
+  langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = langSwitch.classList.toggle('open');
+    langBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  document.addEventListener('click', (e) => {
+    if(!langSwitch.contains(e.target)){
+      langSwitch.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  langOptions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setLanguage(btn.dataset.lang);
+      langSwitch.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  mobileLangOptions.forEach(btn => {
+    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+  });
+
   // Scroll reveal (single, deliberate — section heads and cards fade up once)
   const revealEls = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
@@ -947,11 +1135,13 @@
   // Newsletter fake-submit
   const subForm = document.getElementById('subForm');
   const subConfirm = document.getElementById('subConfirm');
-  subForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    subConfirm.classList.add('show');
-    subForm.querySelector('input[type="email"]').value = '';
-  });
+  if(subForm){
+    subForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      subConfirm.classList.add('show');
+      subForm.querySelector('input[type="email"]').value = '';
+    });
+  }
 </script>
 
 </body>
